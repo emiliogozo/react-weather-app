@@ -16,6 +16,7 @@ class App extends Component {
     };
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.onDayClicked = this.onDayClicked.bind(this);
   }
 
   onFormSubmit(zipcode) {
@@ -27,11 +28,15 @@ class App extends Component {
       });
   }
 
+  onDayClicked(dayIndex) {
+    this.setState({ selectedDate: dayIndex });
+  }
+
   render() {
     return (
       <div className="app">
         <ZipForm onSubmit={this.onFormSubmit} />
-        <WeatherList days={this.state.dates} />
+        <WeatherList days={this.state.dates} onDayClicked={this.onDayClicked} />
       </div>
     );
   }
