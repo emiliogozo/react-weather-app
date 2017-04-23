@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 
 class ZipForm extends Component {
   constructor(props) {
@@ -29,5 +31,14 @@ class ZipForm extends Component {
     );
   }
 }
+
+ZipForm.PropTypes = {
+  zips: PropTypes.arrayOf(PropTypes.number).isRequired,
+  onSubmit: PropTypes.func
+};
+
+ZipForm.defaultProps = {
+  onSubmit: () => {}
+};
 
 export default ZipForm;
