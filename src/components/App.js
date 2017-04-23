@@ -3,6 +3,7 @@ import { get } from 'axios';
 
 import ZipForm from './ZipForm';
 import WeatherList from './WeatherList';
+import CurrentDay from './CurrentDay';
 
 class App extends Component {
   constructor(props) {
@@ -33,10 +34,13 @@ class App extends Component {
   }
 
   render() {
+    const { dates, city, selectedDate } = this.state;
+
     return (
       <div className="app">
         <ZipForm onSubmit={this.onFormSubmit} />
         <WeatherList days={this.state.dates} onDayClicked={this.onDayClicked} />
+        {selectedDate !== null && <CurrentDay city={city} day={dates[selectedDate]} />}
       </div>
     );
   }
