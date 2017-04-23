@@ -9,6 +9,17 @@ class ZipForm extends Component {
     };
 
     this.inputUpdated = this.inputUpdated.bind(this);
+    this.submitZipcode = this.submitZipcode.bind(this);
+  }
+
+  submitZipcode(e) {
+    e.preventDefault();
+
+    const { zipcode } = this.state;
+    const { onSubmit } = this.props;
+
+    onSubmit(zipcode);
+    this.setState({ zipcode: '' });
   }
 
   inputUpdated(e) {
@@ -20,7 +31,7 @@ class ZipForm extends Component {
   render() {
     return (
       <div className="zip-form">
-        <form>
+        <form onSubmit={this.submitZipcode}>
           <label htmlFor="zipcode">Zip Code</label>
           <input
             className="form-control"
